@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 
 type IFlower = {
   name: string;
@@ -12,31 +12,42 @@ type IFlower = {
   <div *ngFor="let flower of flowers">
     <p>{{flower.name + ' '+ flower.color}}</p>
   </div>
+  </div>
   `
 })
 export class ChildToParentViewChildInner {
   @Input() flowers: IFlower[] = [];
+  tempFlower: IFlower = { name: 'Dahlia55', color: 'purple55' };
+
   addFlower($flower: IFlower) {
+    console.log("childToParent", this.tempFlower)
     console.log("flowerName ", $flower)
     this.flowers = ([...this.flowers, $flower]);
   }
 }
 
-
-
 @Component({
-  selector: 'parent1',
+  selector: 'parent3',
   template: `
   <div id="parent3"> 
-    <child1 [flowers]="flowers"></child1>
-    <button (click)="childComponent.addFlower({ name: 'Lotus', color: 'pink' })">Add New Color</button>
+    <child3 [flowers]="flowers"></child3>
+    <button (click)="handleAddFlowers()">Add New Color</button>
   </div>
   `
 })
-export class ChildToParentViewChildOuter {
-  @ViewChild(ChildToParentViewChildInner) childComponent!: ChildToParentViewChildInner;
+export class ChildToParentViewChildOuter implements AfterViewInit {
+  @ViewChild(ChildToParentViewChildInner, { static: false }) childComponent!: ChildToParentViewChildInner;
 
   flowers: IFlower[];
+  ngAfterViewInit() {
+    console.log("childComponent ", this.childComponent)
+
+  }
+
+  handleAddFlowers() {
+    console.log("handleAddFlowers")
+    this.childComponent.addFlower(this.childComponent.tempFlower);
+  }
 
   constructor() {
     this.flowers = [
@@ -45,6 +56,7 @@ export class ChildToParentViewChildOuter {
       { name: 'Lily', color: 'blue' },
       { name: 'Dahlia', color: 'purple' },
     ]
+
   }
 
 }

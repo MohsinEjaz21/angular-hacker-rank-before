@@ -15,7 +15,7 @@ type IFlower = {
 })
 export class ChildToParentOuter {
   flowers: IFlower[];
-
+  tempfl = "llllll"
   constructor() {
     this.flowers = [
       { name: 'Rose', color: 'red' },
@@ -26,6 +26,7 @@ export class ChildToParentOuter {
   }
   // Oh Add method is in parent called from child using eventEmitter
   addFlower($flower: IFlower) {
+    console.log("flowerNameasdasdasasd ", this.tempfl)
     console.log("flowerName ", $flower)
     this.flowers = ([...this.flowers, $flower]);
   }

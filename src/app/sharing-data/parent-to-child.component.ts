@@ -7,14 +7,14 @@ type IFlower = {
 }
 
 @Component({
-  selector: 'parent',
+  selector: 'parent2',
 
   template: `
   <div id="parent"> 
   <div *ngFor="let flower of flowers">
       <p>{{flower.name + ' '+ flower.color}}</p>
     </div>
-    <child [parent]="this"  ></child>
+    <child2 [parent]="this"  ></child2>
   </div>
   `
 })
@@ -33,13 +33,15 @@ export class ParentToChildOuter {
   }
 
   addFlower(flower: IFlower) {
+    console.log("aaaaaa")
+
     console.log("flowerName ", this.flowerNameTemp)
     this.flowers = ([...this.flowers, flower]);
   }
 }
 
 @Component({
-  selector: 'child',
+  selector: 'child2',
 
   template: `
   <div id="child"> 
@@ -48,7 +50,7 @@ export class ParentToChildOuter {
   `
 })
 export class ParentToChildInner implements OnInit {
-  @Input() parent: ParentToChildOuter = new ParentToChildOuter();;
+  @Input() parent!: ParentToChildOuter;
 
   ngOnInit() {
     console.log("parent ", this.parent)
