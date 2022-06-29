@@ -11,6 +11,9 @@ type IFlower = {
 
   template: `
   <div id="parent"> 
+  <div *ngFor="let flower of flowers">
+      <p>{{flower.name + ' '+ flower.color}}</p>
+    </div>
     <child [parent]="this"  ></child>
   </div>
   `
@@ -40,9 +43,6 @@ export class ParentToChildOuter {
 
   template: `
   <div id="child"> 
-    <div *ngFor="let flower of parent.flowers">
-      <p>{{flower.name + ' '+ flower.color}}</p>
-    </div>
     <button (click)="parent.addFlower({ name: 'Lotus', color: 'pink' })">Add New Color</button>
   </div>
   `
