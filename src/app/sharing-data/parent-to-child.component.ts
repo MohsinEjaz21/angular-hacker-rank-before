@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 type IFlower = {
@@ -11,12 +11,14 @@ type IFlower = {
 
   template: `
   <div id="parent"> 
-    <child [flowers]="flowers" [addFlower]="addNewFlower" ></child>
+    <child [parent]="this"  ></child>
   </div>
   `
 })
 export class ParentToChildOuter {
+  flowerNameTemp = 'Lili';
   flowers: IFlower[];
+
   constructor() {
     this.flowers = [
       { name: 'Rose', color: 'red' },
@@ -24,9 +26,11 @@ export class ParentToChildOuter {
       { name: 'Lily', color: 'blue' },
       { name: 'Dahlia', color: 'purple' },
     ]
+    this.flowerNameTemp = 'Lili';
   }
 
-  addNewFlower(flower = { name: 'Lotus', color: 'pink' }) {
+  addFlower(flower: IFlower) {
+    console.log("flowerName ", this.flowerNameTemp)
     this.flowers = ([...this.flowers, flower]);
   }
 }
@@ -36,16 +40,18 @@ export class ParentToChildOuter {
 
   template: `
   <div id="child"> 
-    <div *ngFor="let flower of flowers">
+    <div *ngFor="let flower of parent.flowers">
       <p>{{flower.name + ' '+ flower.color}}</p>
     </div>
-    <button (click)="addFlower({ name: 'Lotus', color: 'pink' })">Add New Color</button>
+    <button (click)="parent.addFlower({ name: 'Lotus', color: 'pink' })">Add New Color</button>
   </div>
   `
 })
-export class ParentToChildInner {
-  @Input() flowers: IFlower[] = [];
-  @Input() addFlower = (flower: IFlower) => { };
+export class ParentToChildInner implements OnInit {
+  @Input() parent: ParentToChildOuter = new ParentToChildOuter();;
 
+  ngOnInit() {
+    console.log("parent ", this.parent)
+  }
 }
 

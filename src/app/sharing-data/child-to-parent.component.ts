@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+type IFlower = {
+  name: string;
+  color: string;
+}
+
 @Component({
   selector: 'parent1',
   template: `
