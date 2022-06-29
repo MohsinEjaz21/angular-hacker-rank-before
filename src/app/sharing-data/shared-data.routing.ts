@@ -7,6 +7,7 @@ import { ParentToChildOuter } from './parent-to-child.component';
 const routes: Routes = [
   { path: 'parentToChild', component: ParentToChildOuter },
   { path: 'childToParent', component: ChildToParentOuter },
+  { path: 'childToParentViewChild', component: ChildToParentOuter },
   { path: 'shared-data', component: AppSharedDataComponent },
 ];
 
