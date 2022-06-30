@@ -4,11 +4,11 @@ import { Component } from "@angular/core";
   selector: 'template-driven',
 
   template: `
-   <h1>
-     Template driven forms with validation
-   </h1> 
+  <h1>
+    <a routerLink="/template-driven/forms"> Template Driven forms </a>
+  </h1>
   `
 })
-export class TemplateDrivenComponent {
+export class TemplateDrivenAppComponent {
 
 }
