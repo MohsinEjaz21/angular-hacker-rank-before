@@ -29,7 +29,7 @@ export class ChildToParentViewChildInner {
 @Component({
   selector: 'parent3',
   template: `
-  <div id="parent3"> 
+  <div id="parent"> 
     <child3 [flowers]="flowers"></child3>
     <button (click)="handleAddFlowers()">Add New Color</button>
   </div>

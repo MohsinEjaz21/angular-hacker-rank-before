@@ -7,10 +7,10 @@ import { ParentToChildOuter } from './parent-to-child.component';
 import { SiblingComp2 } from './sibling.component';
 
 const routes: Routes = [
+  { path: '', component: AppSharedDataComponent },
   { path: 'parentToChild', component: ParentToChildOuter },
   { path: 'childToParent', component: ChildToParentOuter },
   { path: 'childToParentViewChild', component: ChildToParentViewChildOuter },
-  { path: 'shared-data', component: AppSharedDataComponent },
   { path: 'siblings', component: SiblingComp2 },
 
 ];
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppSharedDataRoutingModule { }
+export class SharedDataRoutingModule { }
