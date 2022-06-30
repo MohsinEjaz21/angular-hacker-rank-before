@@ -5,6 +5,7 @@ import { ChildToParentViewChildInner, ChildToParentViewChildOuter } from './chil
 import { ChildToParentInner, ChildToParentOuter } from './child-to-parent.component';
 import { ParentToChildInner, ParentToChildOuter } from './parent-to-child.component';
 import { AppSharedDataRoutingModule } from './shared-data.routing';
+import { SiblingComp1, SiblingComp2 } from './sibling.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,8 @@ import { AppSharedDataRoutingModule } from './shared-data.routing';
     ParentToChildInner,
     ChildToParentViewChildOuter,
     ChildToParentViewChildInner,
+    SiblingComp1,
+    SiblingComp2,
     AppSharedDataComponent
   ],
   imports: [

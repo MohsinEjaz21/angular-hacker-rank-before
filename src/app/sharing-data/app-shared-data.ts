@@ -13,7 +13,9 @@ import { Component } from "@angular/core";
   <h1>
     <a routerLink="/shared-data/parentToChild"> ParentToChild </a>
   </h1>
-
+  <h1>
+    <a routerLink="/shared-data/siblings"> Siblings </a>
+  </h1>
   
   `
 })
