@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'childToParent', component: ChildToParentOuter },
   { path: 'childToParentViewChild', component: ChildToParentViewChildOuter },
   { path: 'siblings', component: SiblingComp2 },
-
 ];
 
 @NgModule({
